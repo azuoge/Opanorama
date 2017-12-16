@@ -3,12 +3,11 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <title>全景-H5全景</title>
+    <title>Opanorama - H5全景</title>
     <meta name="keywords" content="ThreeJS,全景,移动端,js库,手势,陀螺仪">
-    <meta name="description" itemprop="description" content="H5Panorama是一个同时支持手势和陀螺仪的web全景的JS库">
+    <meta name="description" itemprop="description" content="Opanorama是一个同时支持手势和陀螺仪的web全景的JS库">
     <meta name="viewport" id="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <script src="//qzonestyle.gtimg.cn/qzone/hybrid/common/vconsole/vconsole.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -77,27 +76,26 @@
 <div class="panorama"></div>
 <div class="wrap" style="display: none;">
     <div class="inner">
-        <p><span class="title">H5Panorama.js</span> -- 基于Threejs，同时支持手势和陀螺仪的web全景JS库。</p>
+        <p><span class="title">Opanorama.js</span> -- 基于Threejs，同时支持手势和陀螺仪的web全景JS库。</p>
         <div class="btn-wrap">
-            <a class="link" href="index.html">Github</a>
+            <a class="link" target="_blank" href="https://github.com/azuoge/Opanorama">Github</a>
             <span>&nbsp;&nbsp;</span>
             <a class="link" id="show-qrcode" href="javascript:void(0);">H5示例</a>
         </div>
     </div>
 </div>
 <div class="qrcode-wrap" style="display: none;">
-    <div><img src="../res/qrcode.png"></div>
+    <div><img width="200" src="./res/qrcode.png"></div>
     <div class="btn-wrap">
         [ <a class="link" id="close-qrcode" href="javascript:void(0);">关闭</a> ]
     </div>
 </div>
 <script>
+    var ua = navigator.userAgent || '';
+    var isMobile = ua.match(/(iPad).*OS\s([\d_]+)/)
+                 ||ua.match(/(iPhone\sOS)\s([\d_]+)/)
+                 ||ua.match(/Android/);
     (function(){
-        var ua = navigator.userAgent || '';
-        var isMobile = ua.match(/(iPad).*OS\s([\d_]+)/)
-                     ||ua.match(/(iPhone\sOS)\s([\d_]+)/)
-                     ||ua.match(/Android/);
-        
         if(!isMobile){
             document.querySelector('.wrap').style.display = 'block';
         }             
@@ -111,6 +109,38 @@
         });
     })();
 </script>
-<script src="../three.js"></script>
-<script type="text/javascript" src="/dist/panorama.js?ed464704257860ee4439"></script><script type="text/javascript" src="/dist/main.js?b40cb0b5c4f3dbea9676"></script></body>
+<script src="./three.js"></script>
+<script src="./dist/Opanorama.js"></script>
+<script>
+(function(){
+    var longitude = 0,mark='add';
+    new Opanorama({
+        fov: 120,
+        url: './res/1.jpg',
+        container: document.querySelector('.panorama'),
+        onFrame:function(lon, lat) {
+            if(isMobile){
+                return;
+            }
+            if(longitude ==360){
+                mark = 'sub';
+            }
+            if(longitude === 0){
+                mark = 'add';
+            }
+
+            switch(mark){
+                case 'add':
+                    longitude += 0.05;
+                    break;
+                case 'sub':
+                    longitude -= 0.05;
+                    break;    
+            }
+            return {lon: lon + longitude,lat: -90}
+        }
+    });
+})();
+</script>
+</body>
 </html>

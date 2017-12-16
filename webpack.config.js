@@ -5,14 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (options = {}) => ({
     entry: {
-        panorama: './src/lib/panorama.js',
-        main: './src/main.js'
+        Opanorama: './src/Opanorama.js'
     },
     output: {
         path: resolve(__dirname, 'dist'),
-        filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
-        chunkFilename: '[id].js?[chunkhash]',
-        publicPath: options.dev ? '/dev/' : '/dist/'
+        filename:  `[name].js${options.dev ?'':'?[chunkhash]'}`
     },
     module: {
         rules: [
@@ -31,20 +28,16 @@ module.exports = (options = {}) => ({
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['panorama']
-        }),
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
+            names: ['Opanorama']
         })
     ],
-    resolve: {},
     devServer: {
         host: '127.0.0.1',
         port: 8080,
         quiet: false,
         stats: {colors: true},
         historyApiFallback: {
-            index: url.parse(options.dev ? '/dev/' : '').pathname
+            index: '/'
         }
     },
     devtool: '#source-map'

@@ -1,7 +1,7 @@
 import Orienter from './orienter'
 import Toucher from './toucher'
 
-export default class Panorama {
+export default class Opanorama {
     constructor(config) {
         this._config = Object.assign({
             url: '',                    //全景图片
@@ -162,7 +162,7 @@ export default class Panorama {
         let lon = this._touch.lon + this._fix.lon + this._orient.lon;
 
         //外部传的经纬度
-        let obj = config.onFrame(lon, lat);
+        let obj = config.onFrame(lon, lat)||{};
         lon += (obj.lon || 0);
         lat += (obj.lat || 0);
 
@@ -181,3 +181,4 @@ export default class Panorama {
     }
 
 }
+window.Opanorama = Opanorama;

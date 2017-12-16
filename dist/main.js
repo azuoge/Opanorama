@@ -1,2 +1,0 @@
-webpackJsonp([0],{3:function(e,n,a){"use strict";var r=a(0),t=function(e){return e&&e.__esModule?e:{default:e}}(r),u=0,o="add";new t.default({fov:120,supportOrient:!1,url:"../res/1.jpg",container:document.querySelector(".panorama"),onFrame:function(e,n){switch(360==u&&(o="sub"),0===u&&(o="add"),o){case"add":u+=.05;break;case"sub":u-=.05}return{lon:e+u,lat:n}}})}},[3]);
-//# sourceMappingURL=main.js.map?b40cb0b5c4f3dbea9676
