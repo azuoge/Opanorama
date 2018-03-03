@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --env.dev",
-    "test": "webpack --watch -p --progress --hide-modules",
+    "dev": "webpack --watch -p --progress --hide-modules",
     "build": "rimraf dist && webpack -p --progress --hide-modules"
   },
   "author": "",

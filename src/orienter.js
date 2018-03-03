@@ -8,7 +8,8 @@ export default class Orienter {
         }, config);
 
         this.lon = this.lat = 0;
-        this.offsetMooth = 1;
+        this.moothFactor = 10;
+        this.boundary = 320;
         this.direction = window.orientation || 0;
         this.bind();
     }
@@ -33,18 +34,23 @@ export default class Orienter {
     }
 
     _mooth(x, lx) { //插值为了平滑些
+
         if (lx === undefined) {
             return x;
         }
-        if (Math.abs(x - lx) > this.offsetMooth) {
-            if (x > lx) {
-                x = lx + this.offsetMooth;
-            } else {
-                x = lx - this.offsetMooth;
+
+        //0至360,边界值特例，有卡顿待优化
+        if (Math.abs(x - lx) > this.boundary) {
+            if (lx > this.boundary) {
+               lx = 0;
+            }else {
+                lx =360;
             }
-        } else {
-            x = lx;
         }
+
+
+        //滤波降噪
+        x = lx + (x-lx) / this.moothFactor;
         return x;
     }
 
@@ -66,12 +72,9 @@ export default class Orienter {
 
         this.lon = this.lon > 0 ? this.lon % 360 : this.lon % 360 + 360;
 
-        if (this.lastLat === undefined) {
-            this.lastLat = this.lat;
-        }
-
-        //lat变化跳动比较大，插值为了平滑些
+        //插值为了平滑，修复部分android手机陀螺仪数字有抖动异常的
         this.lastLat = this.lat = this._mooth(this.lat, this.lastLat);
+        this.lastLon = this.lon = this._mooth(this.lon, this.lastLon);
 
         this._config.onChange({
             lon: this.lon,
