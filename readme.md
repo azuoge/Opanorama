@@ -20,3 +20,4 @@ const panorama = new Opanorama({
 });
 ```
 
+[代码示例](https://azuoge.github.io/Opanorama/) 
