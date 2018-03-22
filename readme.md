@@ -1,4 +1,4 @@
-[Opanorama.js](https://lmxinxi-wx.b0.upaiyun.com/app/Opanorama/index.html) 基于Threejs，同时支持手势和陀螺仪的web全景JS库。
+[Opanorama.js](https://azuoge.github.io/Opanorama/) 基于Threejs，同时支持手势和陀螺仪的web全景JS库。
 
 
 ```html
