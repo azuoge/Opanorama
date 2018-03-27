@@ -115,6 +115,8 @@
 (function(){
     var longitude = 0,mark='add';
     new Opanorama({
+        offsetLongitude: 0,         
+        offsetLatitude: 90,
         fov: 90,
         url:  './res/'+(isMobile?Math.floor((Math.random()*3)):'pc')+'.jpg',
         container: document.querySelector('.panorama'),
