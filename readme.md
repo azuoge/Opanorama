@@ -1,4 +1,4 @@
-[Opanorama.js](https://azuoge.github.io/Opanorama/) 基于Threejs，同时支持手势和陀螺仪的web全景JS库。
+[Opanorama.js](https://azuoge.github.io/Opanorama/) 基于Threejs，同时支持手势和陀螺仪的web全景JS库。<br>亲，觉得好用，给个star！！！
 
 
 ```html
