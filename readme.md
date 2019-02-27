@@ -29,3 +29,7 @@ const panorama = new Opanorama({
 ```
 
 [代码示例](https://azuoge.github.io/Opanorama/) 
+
+特性:
+> 1、使用一阶滞后滤波算法解决部分安卓机型陀螺仪输入数值抖动的问题；
+> 2、同时支持手势和陀螺仪交互。
