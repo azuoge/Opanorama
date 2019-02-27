@@ -1,19 +1,11 @@
 [Opanorama.js](https://azuoge.github.io/Opanorama/) 基于Threejs，同时支持手势和陀螺仪的web全景JS库。
 
-
-
-
 亲，觉得好用，给个star！！！
-
-
-
-
 
 ```html
 <script src="https://threejs.org/build/three.js"></script>
 <script src="/dist/Opanorama.js"></script>
 ```
-
 
 ```js
 const panorama = new Opanorama({
@@ -31,5 +23,5 @@ const panorama = new Opanorama({
 [代码示例](https://azuoge.github.io/Opanorama/) 
 
 特性:
-> 1、使用一阶滞后滤波算法解决部分安卓机型陀螺仪输入数值抖动的问题；
+> 1、使用一阶滞后滤波算法解决部分安卓机型陀螺仪输入数值抖动的问题；<br>
 > 2、同时支持手势和陀螺仪交互。
